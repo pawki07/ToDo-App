@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        
+        
+
+        <div class="container">
+
+            
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Todo App</h1>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" id="name" name="name">
+                        <input type="text" id="priority" name="priority">
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+            <br>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Task ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                          <tr>
+                              
+                            <th scope="row">{{task.id}}</th>
+                            <td>{{task.name}}</td>
+                            <td>{{task.priority}}</td>
+                            <td><a class="btn btn-primary" href="delete/{{task.id}}">Done</a></td>
+                            
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                      
+                      
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
